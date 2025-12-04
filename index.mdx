@@ -66,31 +66,39 @@ export const myToolFn: ToolFunction<{ message: string }> = (params) => {
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    CTP Ecosystem                         │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
-│   │  ctp-core   │    │ ctp-runtime │    │ctp-discovery│ │
-│   │   Types &   │───▶│  Execution  │───▶│  OpenAPI &  │ │
-│   │ Validation  │    │   Engine    │    │  Manifests  │ │
-│   └─────────────┘    └─────────────┘    └─────────────┘ │
-│          │                  │                  │         │
-│          ▼                  ▼                  ▼         │
-│   ┌─────────────────────────────────────────────────┐   │
-│   │                   ctp-sdk                        │   │
-│   │         Embeddable Widget with Autosense         │   │
-│   └─────────────────────────────────────────────────┘   │
-│                          │                               │
-│          ┌───────────────┼───────────────┐              │
-│          ▼               ▼               ▼              │
-│   ┌───────────┐   ┌───────────┐   ┌───────────┐        │
-│   │  OpenAPI  │   │    MCP    │   │  llms.txt │        │
-│   │    3.1    │   │ Manifest  │   │           │        │
-│   └───────────┘   └───────────┘   └───────────┘        │
-│                                                          │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph core["Core Packages"]
+        direction LR
+        A["@conveniencepro/ctp-core<br/><small>Types & Validation</small>"]
+        B["@conveniencepro/ctp-runtime<br/><small>Execution Engine</small>"]
+        C["@conveniencepro/ctp-discovery<br/><small>OpenAPI & Manifests</small>"]
+    end
+
+    A --> B --> C
+
+    subgraph sdk["Embeddable SDK"]
+        D["@conveniencepro/ctp-sdk<br/><small>Widget with Autosense</small>"]
+    end
+
+    A --> D
+    B --> D
+    C --> D
+
+    subgraph output["Discovery Formats"]
+        direction LR
+        E["OpenAPI 3.1"]
+        F["MCP Manifest"]
+        G["llms.txt"]
+    end
+
+    D --> E
+    D --> F
+    D --> G
+
+    style core fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
+    style sdk fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
+    style output fill:#d1fae5,stroke:#10b981,stroke-width:2px
 ```
 
 ## npm Packages
