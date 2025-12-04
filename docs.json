@@ -104,7 +104,7 @@
         },
         {
           "anchor": "GitHub",
-          "href": "https://github.com/titan-alpha/convenience-pro",
+          "href": "https://github.com/titan-alpha/ctp",
           "icon": "github"
         }
       ]
@@ -139,7 +139,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/titan-alpha/convenience-pro",
+      "github": "https://github.com/titan-alpha/ctp",
       "website": "https://conveniencepro.cc"
     }
   },
