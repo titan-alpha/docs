@@ -67,38 +67,49 @@ export const myToolFn: ToolFunction<{ message: string }> = (params) => {
 ## Architecture
 
 ```mermaid
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ffffff','primaryTextColor':'#0f172a','primaryBorderColor':'#6366f1','lineColor':'#475569','secondaryColor':'#f8fafc','tertiaryColor':'#fefce8','clusterBkg':'#ffffff','clusterBorder':'#cbd5e1','fontSize':'15px','fontFamily':'ui-sans-serif, system-ui, -apple-system, sans-serif'}}}%%
 flowchart TB
-    subgraph core["Core Packages"]
+    subgraph core["<b>Core Packages</b>"]
         direction LR
-        A["@conveniencepro/ctp-core<br/><small>Types & Validation</small>"]
-        B["@conveniencepro/ctp-runtime<br/><small>Execution Engine</small>"]
-        C["@conveniencepro/ctp-discovery<br/><small>OpenAPI & Manifests</small>"]
+        A["<b>@conveniencepro/ctp-core</b><br/><i>Types & Validation</i>"]
+        B["<b>@conveniencepro/ctp-runtime</b><br/><i>Execution Engine</i>"]
+        C["<b>@conveniencepro/ctp-discovery</b><br/><i>OpenAPI & Manifests</i>"]
     end
 
     A --> B --> C
 
-    subgraph sdk["Embeddable SDK"]
-        D["@conveniencepro/ctp-sdk<br/><small>Widget with Autosense</small>"]
+    subgraph sdk["<b>Embeddable SDK</b>"]
+        D["<b>@conveniencepro/ctp-sdk</b><br/><i>Widget with Autosense</i>"]
     end
 
     A --> D
     B --> D
     C --> D
 
-    subgraph output["Discovery Formats"]
+    subgraph output["<b>Discovery Formats</b>"]
         direction LR
-        E["OpenAPI 3.1"]
-        F["MCP Manifest"]
-        G["llms.txt"]
+        E["<b>OpenAPI 3.1</b>"]
+        F["<b>MCP Manifest</b>"]
+        G["<b>llms.txt</b>"]
     end
 
     D --> E
     D --> F
     D --> G
 
-    style core fill:#e0e7ff,stroke:#6366f1,stroke-width:2px
-    style sdk fill:#dbeafe,stroke:#3b82f6,stroke-width:2px
-    style output fill:#d1fae5,stroke:#10b981,stroke-width:2px
+    classDef coreStyle fill:#ffffff,stroke:#6366f1,stroke-width:3px,color:#0f172a,rx:12,ry:12
+    classDef sdkStyle fill:#ffffff,stroke:#3b82f6,stroke-width:3px,color:#0f172a,rx:12,ry:12
+    classDef outputStyle fill:#ffffff,stroke:#10b981,stroke-width:3px,color:#0f172a,rx:12,ry:12
+
+    class A,B,C coreStyle
+    class D sdkStyle
+    class E,F,G outputStyle
+
+    style core fill:#fefce8,stroke:#ca8a04,stroke-width:4px,stroke-dasharray:0,rx:16,ry:16,color:#422006
+    style sdk fill:#eff6ff,stroke:#2563eb,stroke-width:4px,stroke-dasharray:0,rx:16,ry:16,color:#1e3a8a
+    style output fill:#f0fdf4,stroke:#059669,stroke-width:4px,stroke-dasharray:0,rx:16,ry:16,color:#14532d
+
+    linkStyle default stroke:#475569,stroke-width:3px
 ```
 
 ## npm Packages
