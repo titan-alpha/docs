@@ -68,34 +68,28 @@ export const myToolFn: ToolFunction<{ message: string }> = (params) => {
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ffffff','primaryTextColor':'#0f172a','primaryBorderColor':'#6366f1','lineColor':'#475569','secondaryColor':'#f8fafc','tertiaryColor':'#fefce8','clusterBkg':'#ffffff','clusterBorder':'#cbd5e1','fontSize':'15px','fontFamily':'ui-sans-serif, system-ui, -apple-system, sans-serif'}}}%%
-flowchart TB
+flowchart LR
     subgraph core["<b>Core Packages</b>"]
-        direction LR
+        direction TB
         A["<b>@conveniencepro/ctp-core</b><br/><i>Types & Validation</i>"]
         B["<b>@conveniencepro/ctp-runtime</b><br/><i>Execution Engine</i>"]
         C["<b>@conveniencepro/ctp-discovery</b><br/><i>OpenAPI & Manifests</i>"]
+        A --> B --> C
     end
-
-    A --> B --> C
 
     subgraph sdk["<b>Embeddable SDK</b>"]
         D["<b>@conveniencepro/ctp-sdk</b><br/><i>Widget with Autosense</i>"]
     end
 
-    A --> D
-    B --> D
-    C --> D
-
     subgraph output["<b>Discovery Formats</b>"]
-        direction LR
+        direction TB
         E["<b>OpenAPI 3.1</b>"]
         F["<b>MCP Manifest</b>"]
         G["<b>llms.txt</b>"]
     end
 
-    D --> E
-    D --> F
-    D --> G
+    core --> sdk
+    sdk --> output
 
     classDef coreStyle fill:#ffffff,stroke:#6366f1,stroke-width:3px,color:#0f172a,rx:12,ry:12
     classDef sdkStyle fill:#ffffff,stroke:#3b82f6,stroke-width:3px,color:#0f172a,rx:12,ry:12
