@@ -68,36 +68,48 @@ export const myToolFn: ToolFunction<{ message: string }> = (params) => {
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ffffff','primaryTextColor':'#0f172a','primaryBorderColor':'#6366f1','lineColor':'#475569','secondaryColor':'#f8fafc','tertiaryColor':'#fefce8','clusterBkg':'#ffffff','clusterBorder':'#cbd5e1','fontSize':'15px','fontFamily':'ui-sans-serif, system-ui, -apple-system, sans-serif'}}}%%
-flowchart LR
-    subgraph core["<b>Core Packages</b>"]
-        direction TB
+flowchart TB
+    subgraph core["&nbsp;<br/><b>Core Packages</b><br/>&nbsp;"]
+        direction LR
         A["<b>@conveniencepro/ctp-core</b><br/><i>Types & Validation</i>"]
         B["<b>@conveniencepro/ctp-runtime</b><br/><i>Execution Engine</i>"]
         C["<b>@conveniencepro/ctp-discovery</b><br/><i>OpenAPI & Manifests</i>"]
-        A --> B --> C
     end
 
-    subgraph sdk["<b>Embeddable SDK</b>"]
+    A --> B --> C
+
+    SPACER1[" "]
+
+    subgraph sdk["&nbsp;<br/><b>Embeddable SDK</b><br/>&nbsp;"]
         D["<b>@conveniencepro/ctp-sdk</b><br/><i>Widget with Autosense</i>"]
     end
 
-    subgraph output["<b>Discovery Formats</b>"]
-        direction TB
+    C --> SPACER1
+    SPACER1 --> D
+
+    SPACER2[" "]
+
+    subgraph output["&nbsp;<br/><b>Discovery Formats</b><br/>&nbsp;"]
+        direction LR
         E["<b>OpenAPI 3.1</b>"]
         F["<b>MCP Manifest</b>"]
         G["<b>llms.txt</b>"]
     end
 
-    core --> sdk
-    sdk --> output
+    D --> SPACER2
+    SPACER2 --> E
+    SPACER2 --> F
+    SPACER2 --> G
 
     classDef coreStyle fill:#ffffff,stroke:#6366f1,stroke-width:3px,color:#0f172a,rx:12,ry:12
     classDef sdkStyle fill:#ffffff,stroke:#3b82f6,stroke-width:3px,color:#0f172a,rx:12,ry:12
     classDef outputStyle fill:#ffffff,stroke:#10b981,stroke-width:3px,color:#0f172a,rx:12,ry:12
+    classDef spacerStyle fill:none,stroke:none,color:transparent
 
     class A,B,C coreStyle
     class D sdkStyle
     class E,F,G outputStyle
+    class SPACER1,SPACER2 spacerStyle
 
     style core fill:#fefce8,stroke:#ca8a04,stroke-width:4px,stroke-dasharray:0,rx:16,ry:16,color:#422006
     style sdk fill:#eff6ff,stroke:#2563eb,stroke-width:4px,stroke-dasharray:0,rx:16,ry:16,color:#1e3a8a
