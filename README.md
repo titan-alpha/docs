@@ -1,43 +1,48 @@
-# Mintlify Starter Kit
+# ConveniencePro Tool Protocol (CTP) Specification
 
-Use the starter kit to get your docs deployed and ready to customize.
+Official documentation for the ConveniencePro Tool Protocol - an open specification for browser-native developer tools with MCP compatibility.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Documentation
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+Visit the live documentation at:
+- **Production**: [spec.conveniencepro.cc](https://spec.conveniencepro.cc)
+- **Preview**: [titan-alpha.mintlify.dev](https://titan-alpha.mintlify.dev)
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+## Contents
+
+- **Specification** - Complete CTP protocol reference
+- **Implementation Guide** - Developer guides for building tools
+- **Examples** - Reference implementations
+- **LLM Integration** - AI-powered tool generation
 
 ## Development
 
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
+### Prerequisites
 
-```
-npm i -g mint
-```
+Install the [Mintlify CLI](https://www.npmjs.com/package/mintlify):
 
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
+```bash
+npm i -g mintlify
 ```
 
-View your local preview at `http://localhost:3000`.
+### Local Development
 
-## Publishing changes
+Run the docs locally:
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+```bash
+mintlify dev
+```
 
-## Need help?
+### Publishing Changes
 
-### Troubleshooting
+Push to `main` branch to trigger automatic deployment.
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+## Related Resources
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+- [ConveniencePro](https://conveniencepro.cc) - Main tool suite
+- [GitHub](https://github.com/titan-alpha/convenience-pro) - Source code
+- [npm Packages](https://www.npmjs.com/org/conveniencepro) - Published packages
+
+## License
+
+MIT License - see [LICENSE](./LICENSE)

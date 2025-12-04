@@ -1,97 +1,120 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: 'ConveniencePro Tool Protocol'
+description: 'Open specification for browser-native developer tools with MCP compatibility'
 ---
 
-## Setting up
+# ConveniencePro Tool Protocol (CTP)
 
-Get your documentation site up and running in minutes.
+**Version 1.0.0** | [GitHub](https://github.com/titan-alpha/convenience-pro)
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+CTP is an open specification for building browser-native developer tools that are inherently compatible with the [Model Context Protocol (MCP)](https://modelcontextprotocol.io). It enables developers to create tools that work seamlessly in web browsers while maintaining full interoperability with AI-powered development environments.
 
-## Make it yours
+## Why CTP?
 
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Browser-Native" icon="browser">
+    Tools execute directly in the browser using Web APIs, ensuring privacy and eliminating server dependencies.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="MCP Compatible" icon="plug">
+    Automatic conversion to MCP format enables integration with Claude, Cursor, and other AI tools.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Type-Safe" icon="shield-check">
+    Full TypeScript support with comprehensive schemas and validation.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="LLM-Ready" icon="robot">
+    Built-in AI hints and instructions help LLMs use your tools effectively.
   </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## Quick Example
 
-Everything you need to create world-class documentation.
+```typescript
+import type { ToolDefinition, ToolFunction } from '@conveniencepro/ctp-core';
 
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
+export const myToolDefinition: ToolDefinition = {
+  id: 'hello-world',
+  name: 'Hello World',
+  description: 'A simple greeting tool',
+  category: 'utilities',
+  tags: ['hello', 'greeting', 'demo'],
+  method: 'POST',
+  parameters: [
+    {
+      name: 'name',
+      type: 'text',
+      label: 'Your Name',
+      description: 'Name to greet',
+      required: true,
+    },
+  ],
+  outputDescription: 'Greeting message',
+  example: {
+    input: { name: 'World' },
+    output: { message: 'Hello, World!' },
+  },
+  executionMode: 'client',
+};
 
-## Need inspiration?
+export const myToolFn: ToolFunction<{ message: string }> = (params) => {
+  return {
+    success: true,
+    data: { message: `Hello, ${params.name}!` },
+  };
+};
+```
 
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    CTP Ecosystem                         │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐ │
+│   │  ctp-core   │    │ ctp-runtime │    │ctp-discovery│ │
+│   │   Types &   │───▶│  Execution  │───▶│  OpenAPI &  │ │
+│   │ Validation  │    │   Engine    │    │  Manifests  │ │
+│   └─────────────┘    └─────────────┘    └─────────────┘ │
+│          │                  │                  │         │
+│          ▼                  ▼                  ▼         │
+│   ┌─────────────────────────────────────────────────┐   │
+│   │                   ctp-sdk                        │   │
+│   │         Embeddable Widget with Autosense         │   │
+│   └─────────────────────────────────────────────────┘   │
+│                          │                               │
+│          ┌───────────────┼───────────────┐              │
+│          ▼               ▼               ▼              │
+│   ┌───────────┐   ┌───────────┐   ┌───────────┐        │
+│   │  OpenAPI  │   │    MCP    │   │  llms.txt │        │
+│   │    3.1    │   │ Manifest  │   │           │        │
+│   └───────────┘   └───────────┘   └───────────┘        │
+│                                                          │
+└─────────────────────────────────────────────────────────┘
+```
+
+## npm Packages
+
+| Package | Description |
+|---------|-------------|
+| [`@conveniencepro/ctp-core`](https://npmjs.com/package/@conveniencepro/ctp-core) | Core types and validation |
+| [`@conveniencepro/ctp-runtime`](https://npmjs.com/package/@conveniencepro/ctp-runtime) | Tool execution engine |
+| [`@conveniencepro/ctp-discovery`](https://npmjs.com/package/@conveniencepro/ctp-discovery) | Discovery document generators |
+| [`@conveniencepro/ctp-sdk`](https://npmjs.com/package/@conveniencepro/ctp-sdk) | Embeddable SDK |
+| [`@conveniencepro/ctp-spec`](https://npmjs.com/package/@conveniencepro/ctp-spec) | Specification constants |
+
+## Get Started
+
+<CardGroup cols={2}>
+  <Card title="Read the Specification" icon="book" href="/specification/overview">
+    Understand the complete CTP protocol
+  </Card>
+  <Card title="Build Your First Tool" icon="hammer" href="/implementation/creating-tools">
+    Step-by-step guide to creating tools
+  </Card>
+  <Card title="View Examples" icon="code" href="/examples/overview">
+    Reference implementations
+  </Card>
+  <Card title="LLM Tool Generator" icon="robot" href="/llm-prompts/tool-generator">
+    Have AI generate tools for you
+  </Card>
+</CardGroup>

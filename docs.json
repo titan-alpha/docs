@@ -1,68 +1,95 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "ConveniencePro Tool Protocol",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Overview",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "quickstart"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Specification",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Core Specification",
             "pages": [
-              "api-reference/introduction"
+              "specification/overview",
+              "specification/tool-definition",
+              "specification/parameters",
+              "specification/execution",
+              "specification/results"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Integration",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "specification/discovery",
+              "specification/embedding",
+              "specification/security",
+              "specification/mcp-compliance"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Implementation",
+        "groups": [
+          {
+            "group": "Developer Guide",
+            "pages": [
+              "implementation/getting-started",
+              "implementation/creating-tools",
+              "implementation/validation",
+              "implementation/runtime"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "implementation/discovery-docs",
+              "implementation/embedding"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Examples",
+        "groups": [
+          {
+            "group": "Reference Implementations",
+            "pages": [
+              "examples/overview",
+              "examples/json-formatter",
+              "examples/base64-encoder",
+              "examples/hash-generator"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "LLM Integration",
+        "groups": [
+          {
+            "group": "AI Tool Generation",
+            "pages": [
+              "llm-prompts/overview",
+              "llm-prompts/tool-generator",
+              "llm-prompts/schema-reference"
             ]
           }
         ]
@@ -71,14 +98,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "npm Packages",
+          "href": "https://www.npmjs.com/org/conveniencepro",
+          "icon": "npm"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/titan-alpha/convenience-pro",
+          "icon": "github"
         }
       ]
     }
@@ -90,33 +117,38 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "ConveniencePro",
+        "href": "https://conveniencepro.cc"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Get Started",
+      "href": "/quickstart"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "claude",
+      "chatgpt",
+      "cursor",
+      "mcp"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/titan-alpha/convenience-pro",
+      "website": "https://conveniencepro.cc"
     }
+  },
+  "seo": {
+    "indexHiddenPages": false
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
   }
 }
