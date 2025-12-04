@@ -124,7 +124,7 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/quickstart"
+      "href": "https://spec.conveniencepro.cc/quickstart"
     }
   },
   "contextual": {
